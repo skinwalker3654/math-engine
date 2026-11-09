@@ -203,5 +203,5 @@ The engine provides the built-in constant `PI`:
 
 ---
 
-## this README is build by AI's as well as the outputs of the program with `colors` and `emojis` **BUT** the actual source code is writen by ME
+## this README is build by AI's as well as the outputs of the program with `colors` and `emojis` **BUT** the actual source code is writen by **ME**
 # math-engine
