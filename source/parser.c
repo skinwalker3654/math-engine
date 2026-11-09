@@ -75,6 +75,11 @@ static Expr *parse_primary(Parser *ps) {
     }
 
     if(match(ps->current,TOK_PI)) {
+        if(match(ps->next,TOK_ASSIGN)) {
+            printf("\033[1;31m✘ error:\033[0m cannot assign values to constant PI\n");
+            return NULL;
+        }
+
         Expr *new = expr_new_pi();
         if(!new) return NULL;
         consume(ps);
@@ -348,11 +353,6 @@ static Ast *parse_showfuncs(Parser *ps) {
 }
 
 static Ast *parse_stmt(Parser *ps) {
-    if(match(ps->current,TOK_PI) && match(ps->next,TOK_ASSIGN)) {
-        printf("\033[1;31m✘ error:\033[0m cannot assign values to constant PI\n");
-        return NULL;
-    }
-
     if(match(ps->current,TOK_IDENT)) {
         Ast *fd = parse_var_dec_or_func_def(ps);
         if(fd) return fd;
