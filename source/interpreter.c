@@ -104,6 +104,15 @@ static int evaluate_expr(VariableList *list, FunctionList *fl, Expr *ex, float *
                 case OP_ADD: *out = left + right; return 0;
                 case OP_SUB: *out = left - right; return 0;
                 case OP_MUL: *out = left * right; return 0;
+                case OP_POW: {
+                    if(left < 0 && right != (int)right) {
+                        printf("\033[1;31m✘ error:\033[0m negative base with fractional exponent\n");
+                        return -1;
+                    }
+
+                    *out = powf(left,right); 
+                    return 0;
+                }
                 case OP_DIV: 
                     if(right == 0) {
                         printf("\033[1;31m✘ error:\033[0m division by 0\n");

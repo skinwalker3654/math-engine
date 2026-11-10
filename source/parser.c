@@ -111,6 +111,30 @@ static Expr *parse_primary(Parser *ps) {
     return NULL;
 }
 
+static Expr *parse_unary(Parser *ps);
+static Expr *parse_power(Parser *ps) {
+    Expr *base = parse_primary(ps);
+    if(!base) return NULL;
+
+    if(match(ps->current,TOK_CARET)) {
+        consume(ps);
+        Expr *exp = parse_unary(ps);
+        if(!exp) {
+            expr_destroy(base);
+            return NULL;
+        }
+
+        base = expr_new_binary(base,OP_POW,exp);
+        if(!base) {
+            expr_destroy(exp);
+            return NULL;
+        }
+
+        return base;
+    }
+    return base;
+}
+
 static Expr *parse_unary(Parser *ps) {
     if(match(ps->current,TOK_PLUS)) {
         consume(ps);
@@ -126,7 +150,7 @@ static Expr *parse_unary(Parser *ps) {
         return expr_new_unary(ex,1);
     }
 
-    return parse_primary(ps);
+    return parse_power(ps);
 }
 
 static Expr *parse_multiplicative(Parser *ps) {

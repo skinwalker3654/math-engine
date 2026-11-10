@@ -19,6 +19,7 @@ typedef enum {
     OP_MUL,
     OP_DIV,
     OP_MOD,
+    OP_POW,
 } BinopType;
 
 typedef struct Expr {

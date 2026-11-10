@@ -100,6 +100,7 @@ void expr_print(Expr *ex) {
                 case OP_MUL: printf(" \033[35m*\033[0m "); break;
                 case OP_DIV: printf(" \033[35m/\033[0m "); break;
                 case OP_MOD: printf(" \033[35m%%\033[0m "); break;
+                case OP_POW: printf(" \033[35m^\033[0m "); break;
             }
             expr_print(ex->bin.right);
             break;

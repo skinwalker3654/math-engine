@@ -18,6 +18,7 @@ typedef enum {
     TOK_STAR,
     TOK_SLASH,
     TOK_MODULO,
+    TOK_CARET,
     TOK_ASSIGN,
     TOK_LPAR,
     TOK_RPAR,

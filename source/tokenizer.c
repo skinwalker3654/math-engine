@@ -101,6 +101,7 @@ Token lexer_get_next(Lexer *lx) {
         case '=': return (Token){.type=TOK_ASSIGN};
         case '%': return (Token){.type=TOK_MODULO};
         case ',': return (Token){.type=TOK_COMMA};
+        case '^': return (Token){.type=TOK_CARET};
     }
 
     printf("\033[1;31m✘ error:\033[0m invalid character '%c'\n",sym);
@@ -166,6 +167,9 @@ void token_print(Token tk) {
             break;
         case TOK_PI:
             printf("PI(3.14)\n");
+            break;
+        case TOK_CARET:
+            printf("CARET\n");
             break;
     }
 }

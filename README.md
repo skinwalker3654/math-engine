@@ -13,6 +13,7 @@ The project implements a complete processing pipeline consisting of a **Lexer, P
   - Division (`/`)
   - Modulo (`%`)
   - Unary operators (`+`, `-`)
+  - Power operations (`^`)
   - Parenthesized expressions
 
 - **Variables**
@@ -100,6 +101,9 @@ Evaluate mathematical expressions directly:
 
 [math-engine]> 10 % 3
 ➜ 1.00
+
+[math-engine]> 10 ^ 2
+➜ 100.0
 ```
 
 ### Variables
